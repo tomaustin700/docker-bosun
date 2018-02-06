@@ -14,7 +14,9 @@ WORKDIR /tmp
 
 RUN set -x \
     && apt-get update \
-    && apt-get install -y procps mlocate wget git \
+    && apt-get install -yq tzdata procps mlocate wget git \
+    && dpkg-reconfigure -f noninteractive tzdata \
+    && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && apt-get clean \
     && wget --progress=bar:force -O ${GO_PACKAGE} "https://dl.google.com/go/${GO_PACKAGE}" \
     && tar -C /usr/local -xzf ${GO_PACKAGE} \
