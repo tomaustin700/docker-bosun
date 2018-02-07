@@ -28,7 +28,7 @@ RUN set -x \
 RUN set -x \
     && go get -u bosun.org/cmd/bosun \
     && cd $GOPATH/src/bosun.org/build \
-    && go build -tags="esv5" build.go \
+    && go build -tags="esv5" \
     && ./build \
     && mv $GOPATH/bin/bosun $BOSUN_HOME/bosun \
     && $BOSUN_HOME/bosun -version \
