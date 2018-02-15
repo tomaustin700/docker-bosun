@@ -8,7 +8,7 @@ ENV TSDBRELAY_HOME /tsdbrelay
 ENV GOPATH /gobuild
 ENV GOROOT /usr/local/go
 ENV PATH $PATH:/usr/local/go/bin
-ENV GO_PACKAGE go1.9.3.linux-amd64.tar.gz
+ENV GO_PACKAGE go1.9.4.linux-amd64.tar.gz
 
 WORKDIR /tmp
 
