@@ -7,14 +7,23 @@ ENV SCOLLECTOR_HOME /scollector
 ENV TSDBRELAY_HOME /tsdbrelay
 ENV GOPATH /gobuild
 ENV GOROOT /usr/local/go
-ENV PATH $PATH:/usr/local/go/bin
-ENV GO_PACKAGE go1.9.4.linux-amd64.tar.gz
+ENV PATH $PATH:/usr/local/go/bin:$GOPATH/bin
+ENV GO_PACKAGE go1.10.linux-amd64.tar.gz
+ENV DEBIAN_FRONTEND noninteractive
 
 WORKDIR /tmp
 
 RUN set -x \
     && apt-get update \
-    && apt-get install -yq tzdata procps mlocate wget git \
+    && apt-get install -yq --no-install-recommends apt-utils \
+    && set +x
+
+RUN set -x \
+    && apt-get install -yq dialog \
+    && set +x
+
+RUN set -x \
+    && apt-get install -yq procps mlocate wget git tzdata \
     && dpkg-reconfigure -f noninteractive tzdata \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && apt-get clean \
@@ -28,15 +37,16 @@ RUN set -x \
 RUN set -x \
     && go get -u bosun.org/cmd/bosun \
     && cd $GOPATH/src/bosun.org/build \
-    && go build -tags="esv5" \
-    && ./build \
+    && go build -v -work build.go \
+    && ./build -esv5 \
+    && ls $GOPATH/bin \
     && mv $GOPATH/bin/bosun $BOSUN_HOME/bosun \
     && $BOSUN_HOME/bosun -version \
     && mv $GOPATH/bin/scollector $SCOLLECTOR_HOME/scollector \
     && $SCOLLECTOR_HOME/scollector -version \
     && mv $GOPATH/bin/tsdbrelay $TSDBRELAY_HOME/tsdbrelay \
     && $TSDBRELAY_HOME/tsdbrelay -version \
-    && apt-get remove -y --purge wget git \
+    && apt-get remove -y --purge wget git dialog apt-utils \
     && apt-get autoremove -y \
     && set +x
 
