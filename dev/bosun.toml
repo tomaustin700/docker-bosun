@@ -13,7 +13,7 @@ DefaultRunEvery = 5
 RuleFilePath = "/data/bosunrules.conf"
 
 # timeanddate.com zones (only for use in the UI)
-TimeAndDate = [ 202, 75, 179, 136 ]
+TimeAndDate = [ 237, 179, 136 ]
 
 # An API key for generating goo.gl shortlinks
 #ShortURLKey = "aKey"
