@@ -1,14 +1,14 @@
 FROM stackexchange/bosun:0.6.0-pre
 MAINTAINER PaladinTyrion <paladintyrion@gmail.com>
 
-ENV VERSION 0.7.0-dev
+ENV VERSION 0.8.0-Preview
 ENV BOSUN_HOME /bosun
 ENV SCOLLECTOR_HOME /scollector
 ENV TSDBRELAY_HOME /tsdbrelay
 ENV GOPATH /gobuild
 ENV GOROOT /usr/local/go
 ENV PATH $PATH:/usr/local/go/bin:$GOPATH/bin
-ENV GO_PACKAGE go1.10.linux-amd64.tar.gz
+ENV GO_PACKAGE go1.11.linux-amd64.tar.gz
 ARG DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /tmp
