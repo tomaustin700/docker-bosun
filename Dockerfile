@@ -36,7 +36,6 @@ RUN set -x \
     && go get -u bosun.org/cmd/bosun \
     && cd $GOPATH/src/bosun.org/build \
     && go build -v -work build.go \
-    && rm -f $GOPATH/bin/* \
     && ./build \
     && mv $GOPATH/bin/bosun $BOSUN_HOME/bosun \
     && $BOSUN_HOME/bosun -version \
