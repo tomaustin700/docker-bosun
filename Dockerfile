@@ -13,6 +13,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /tmp
 
+RUN printf "deb http://archive.debian.org/debian/ wheezy contrib main non-free" > /etc/apt/sources.list
+
 RUN set -x \
     && apt-get update \
     && apt-get install -yq --no-install-recommends apt-utils dialog \
