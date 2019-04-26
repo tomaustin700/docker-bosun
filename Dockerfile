@@ -37,7 +37,7 @@ RUN set -x \
     && cd $GOPATH/src/bosun.org/build \
     && go build -v -work build.go \
     && rm -f $GOPATH/bin/* \
-    && ./build -esv5 \
+    && ./build \
     && mv $GOPATH/bin/bosun $BOSUN_HOME/bosun \
     && $BOSUN_HOME/bosun -version \
     && mv $GOPATH/bin/scollector $SCOLLECTOR_HOME/scollector \
