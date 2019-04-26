@@ -1,5 +1,4 @@
-FROM stackexchange/bosun:0.6.0-pre
-MAINTAINER PaladinTyrion <paladintyrion@gmail.com>
+FROM debian:stretch
 
 ENV VERSION 0.8.0-Preview
 ENV BOSUN_HOME /bosun
@@ -12,8 +11,6 @@ ENV GO_PACKAGE go1.11.linux-amd64.tar.gz
 ARG DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /tmp
-
-RUN printf "deb http://archive.debian.org/debian/ wheezy contrib main non-free" > /etc/apt/sources.list
 
 RUN set -x \
     && apt-get update \
