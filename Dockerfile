@@ -35,9 +35,9 @@ RUN set -x \
     && apt-get install -yq git \
     && go get -u bosun.org/cmd/bosun \
     && cd $GOPATH/src/bosun.org/build \
-    && mkdir $BOSUN_HOME/bosun \
-    && mkdir $SCOLLECTOR_HOME/scollector \
-    && mkdir $TSDBRELAY_HOME/tsdbrelay \
+    && mkdir $BOSUN_HOME/bosun -p \
+    && mkdir $SCOLLECTOR_HOME/scollector -p \
+    && mkdir $TSDBRELAY_HOME/tsdbrelay -p \
     && go build -v -work build.go \
     && ./build \
     && mv $GOPATH/bin/bosun $BOSUN_HOME/bosun \
